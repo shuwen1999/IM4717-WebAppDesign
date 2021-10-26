@@ -4,7 +4,7 @@
     <meta charset=“utf-8”>
     <!-- CSS -->
     <link rel="stylesheet" href="css/layout.css"/>
-	<link rel="stylesheet" href="css/menupage.css"/>
+	<link rel="stylesheet" href="css/account.css"/>
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -28,9 +28,9 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="php/menudisplay.php">Menu</a>
+                    <a href="menudisplay.php">Menu</a>
                     <a href="trackorder.html">Track My Order</a>
-                    <a href="account.html">My Account</a>
+                    <a href="account.php">My Account</a>
                     <a href="support.html">Support</a>
                 </div>
                 </div>
@@ -41,22 +41,28 @@
         <a href="cart.html" style="color: black;"><div style="position:relative; right:-440px;"><i class="fas fa-shopping-cart"></i></div></a>
     </div>
     <div class="main">
-        <div class="banner">
-            <img src="assets/banner.png" width="100%">
+        <h2>My Account</h2>
+        <hr style="padding:0 20px 0 20px;">
+        <div class="general">
+            <h3>General Info</h3>
+            <?php?>
+            <hr>
         </div>
-        <div class="mainmenu">
-            <div class="menunav">
-                <a href="#popular"class="navlink"><div class="navitem"><p>Popular</p></div></a>
-                <a href="#promo" class="navlink"><div class="navitem"><p>Promo</p></div></a>
-                <a href="#mains"class="navlink"><div class="navitem"><p>Mains</p></div></a>
-                <a href="#sides"class="navlink"><div class="navitem"><p>Sides</p></div></a>
-                <a href="#beverages"class="navlink"><div class="navitem"><p>Beverages</p></div></a>
-                <a href="#desserts"class="navlink"><div class="navitem"><p>Desserts</p></div></a>
-            </div>
-            <div class="menudisplay">
-                </div>
+        <div class="billing">
+            <h3>Billing Info</h3>
+            <?php?>
+            <hr>
         </div>
-    </div>
+        <div class="payment">
+            <h3>Payment Info</h3>
+            <?php?>
+            <hr>
+        </div>
+        <div class="orderhistory">
+            <h3>Order History</h3>
+            <?php?>
+            
+        </div>
     </div>
     <div class="footer">
         <div class="footerlink"><a href="faq.html" style="color: black; text-decoration: none;">FAQ</a></div>

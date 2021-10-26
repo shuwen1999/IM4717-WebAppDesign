@@ -20,7 +20,13 @@
 </head>
 <body>
     <div class="header">
-        
+        <?php
+        $conn = mysqli_connect("localhost","f32ee","f32ee","f32ee");
+        if (!$conn){
+            echo "Error: Could not connect to database. Please try again later.";
+               exit;
+        }
+        ?>
         <div style="position:relative;left:-400px;">
             <div class="navbar">
                 <div class="dropdown">
@@ -28,9 +34,9 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="php/menudisplay.php">Menu</a>
+                    <a href="menudisplay.php">Menu</a>
                     <a href="trackorder.html">Track My Order</a>
-                    <a href="account.html">My Account</a>
+                    <a href="account.php">My Account</a>
                     <a href="support.html">Support</a>
                 </div>
                 </div>
@@ -54,7 +60,54 @@
                 <a href="#desserts"class="navlink"><div class="navitem"><p>Desserts</p></div></a>
             </div>
             <div class="menudisplay">
+                <div id="promo">
+                <?php
+                    
+                    $sql = "SELECT productname, category FROM product_menu WHERE category='promo'";
+                    if (!$result = mysqli_query($conn, $sql)) {
+                        echo "Failed to get menu: " . mysqli_error($conn);
+                    }
+                    $resultRow = mysqli_num_rows($result);
+                    echo "<h2>PROMOS</h2>";
+                    if ($resultRow>0){
+                        while ($row = mysqli_fetch_assoc($result)){
+                            // $sqlimage ="SELECT "
+                           if(!$category){ 
+                                echo"<table>";
+                                echo"<tr>";   
+                                echo $row["productname"] . $row["category"] ."<br>";
+                                echo "<button>+</button>";
+                                echo "<tr>";
+                                echo "</table>";
+                            }
+                           else{
+                               echo"none";
+                           }
+                         }
+                    }                   
+                ?>
                 </div>
+                <div id="mains">
+                <?php
+                    $sql = "SELECT productname, category FROM product_menu WHERE category='main'";
+                    if (!$result = mysqli_query($conn, $sql)) {
+                        echo "Failed to get menu: " . mysqli_error($conn);
+                    }
+                    $resultRow = mysqli_num_rows($result);
+                    if ($resultRow>0){
+                        while ($row = mysqli_fetch_assoc($result)){
+                           if(!$category){ 
+                               echo $row["productname"] . $row["category"] ."<br>";
+                            }
+                           else{
+                               echo"none";
+                           }
+                         }
+                    }                   
+                ?>
+                </div>
+                
+            </div>
         </div>
     </div>
     </div>
