@@ -1,0 +1,31 @@
+.main{
+    height:1000px;
+}
+
+.mainmenu{
+    margin-top:50px;
+}
+
+.menunav{
+    float:left;
+    font-weight: 500;
+}
+.navlink{
+    text-decoration: none;
+    color:black;  
+}
+
+.navitem{
+    text-align: center;
+    background-color: #FDEBEB; 
+    margin-left:50px;
+    margin-bottom:5px;
+    padding:1px 20px;
+}
+.menudisplay{
+    float:right;
+}
+
+.footer{
+    clear: both;
+}
