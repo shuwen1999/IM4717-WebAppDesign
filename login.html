@@ -4,7 +4,7 @@
     <meta charset=“utf-8”>
     <!-- CSS -->
     <link rel="stylesheet" href="css/layout.css"/>
-	<link rel="stylesheet" href="css/menupage.css"/>
+	<link rel="stylesheet" href="css/login.css"/>
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -30,7 +30,7 @@
                 <div class="dropdown-content">
                     <a href="menudisplay.php">Menu</a>
                     <a href="trackorder.html">Track My Order</a>
-                    <a href="account.html">My Account</a>
+                    <a href="account.php">My Account</a>
                     <a href="support.html">Support</a>
                 </div>
                 </div>
@@ -41,22 +41,16 @@
         <a href="cart.html" style="color: black;"><div style="position:relative; right:-440px;"><i class="fas fa-shopping-cart"></i></div></a>
     </div>
     <div class="main">
-        <div class="banner">
-            <img src="assets/banner.png" width="100%">
-        </div>
-        <div class="mainmenu">
-            <div class="menunav">
-                <a href="#popular"class="navlink"><div class="navitem"><p>Popular</p></div></a>
-                <a href="#promo" class="navlink"><div class="navitem"><p>Promo</p></div></a>
-                <a href="#mains"class="navlink"><div class="navitem"><p>Mains</p></div></a>
-                <a href="#sides"class="navlink"><div class="navitem"><p>Sides</p></div></a>
-                <a href="#beverages"class="navlink"><div class="navitem"><p>Beverages</p></div></a>
-                <a href="#desserts"class="navlink"><div class="navitem"><p>Desserts</p></div></a>
+        <form action="login.php" method="post">
+            <h2 style="text-align:center;">Sign in to Vivers</h2>
+            <input type="text" name="email" class="loginemail" size="50" placeholder="Email Address" required/>
+            <input type="text" name="password" class="loginpw" size="50" placeholder="Password" required/>
+            <div class="linkbox">
+                <a href="login.php" class="loginlinks"><p>Forget Password</p></a>
+                <a href="login.php" class="loginlinks"><p style="margin-left:240px;">Register Now</p></a>
             </div>
-            <div class="menudisplay">
-                </div>
-        </div>
-    </div>
+            <input type="submit" value="Login" name="login" class="loginbtn" size="50">
+        </form>
     </div>
     <div class="footer">
         <div class="footerlink"><a href="faq.html" style="color: black; text-decoration: none;">FAQ</a></div>

@@ -37,7 +37,7 @@
             </div>
         </div>
         <img src="assets/logo.png" class="logo" >
-        <a href="login.html" style="color: black;"><div style="position:relative; right:-420px"><i class="far fa-user-circle"></i></div></a>
+        <a href="login.php" style="color: black;"><div style="position:relative; right:-420px"><i class="far fa-user-circle"></i></div></a>
         <a href="cart.html" style="color: black;"><div style="position:relative; right:-440px;"><i class="fas fa-shopping-cart"></i></div></a>
     </div>
     <div class="main">

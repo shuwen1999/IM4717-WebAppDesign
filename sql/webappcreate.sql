@@ -44,3 +44,11 @@ create table payment
     carddate int not null,
     cardcvc int not null
 );
+
+create table users
+(
+    loginid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    custid int unsigned not null,
+    loginemail VARCHAR(255) NOT NULL UNIQUE,
+    loginpw VARCHAR(255) NOT NULL
+);
