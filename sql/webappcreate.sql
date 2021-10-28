@@ -12,11 +12,12 @@ create table product_order
   amount float(6,2)
 );
 
-create table image
+create table product_image
 (
     imageid int(11) not null auto_increment primary key,
     productid int unsigned not null,
-    file_name varchar(255) COLLATE utf8_unicode_ci NOT NULL
+    img_name varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+    img_dir varchar(255) COLLATE utf8_unicode_ci NOT NULL
 );
 
 create table cust_details
@@ -42,4 +43,12 @@ create table payment
     cardno int not null,
     carddate int not null,
     cardcvc int not null
+);
+
+create table users
+(
+    loginid INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    custid int unsigned not null,
+    loginemail VARCHAR(255) NOT NULL UNIQUE,
+    loginpw VARCHAR(255) NOT NULL
 );

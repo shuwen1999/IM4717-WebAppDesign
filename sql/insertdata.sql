@@ -44,3 +44,13 @@ insert into payment values
     (3, 3, "Jane", 2938475039494928, 1025, 952),
     (4, 4, "John", 5433345567899876, 0523, 123);
     
+-- insert into product_image values{
+--     -- (1, 1, "chickenchop", "Z:\public_html\IM4717-WebAppDesign\assets\chickenchop.jpg"),
+--     -- (2, 2, "fishandchips" ,"Z:\public_html\IM4717-WebAppDesign\assets\fishandchips.jpg");
+-- }
+
+insert into users values
+    (1,1, "mary@gmail.com", "mary123"),
+    (2,2, "tom2@gmail.com", "tom222"),
+    (3,3, "janejane@gmail.com", "jane321"),
+    (4,4, "johnnyenglish@gmail.com", "engchi");
