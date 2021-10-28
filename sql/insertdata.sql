@@ -49,9 +49,8 @@ insert into payment values
 --     -- (2, 2, "fishandchips" ,"Z:\public_html\IM4717-WebAppDesign\assets\fishandchips.jpg");
 -- }
 
-insert into users values{
+insert into users values
     (1,1, "mary@gmail.com", "mary123"),
     (2,2, "tom2@gmail.com", "tom222"),
     (3,3, "janejane@gmail.com", "jane321"),
     (4,4, "johnnyenglish@gmail.com", "engchi");
-}
