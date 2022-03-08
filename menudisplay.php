@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['cart'])){
+    $_SESSION['cart']=array();
+}
+
+if(isset($_GET['add'])){
+    $_SESSION['details']=$_GET['add'];
+    
+    header("Location:details.php");
+    exit();
+}
+
+
+?>
+
 <html lang="en">
 <head>
     <title>Vivers Menu</title>
@@ -35,86 +51,106 @@
                 </button>
                 <div class="dropdown-content">
                     <a href="menudisplay.php">Menu</a>
-                    <a href="trackorder.html">Track My Order</a>
-                    <a href="account.php">My Account</a>
-                    <a href="support.html">Support</a>
+                    <!-- <a href="trackorder.php">Track My Order</a>
+                    <a href="account.php">My Account</a> -->
+                    <a href="support.php">Support</a>
                 </div>
                 </div>
             </div>
         </div>
-        <img src="assets/logo.png" class="logo" >
-        <a href="login.php" style="color: black;"><div style="position:relative; right:-420px"><i class="far fa-user-circle"></i></div></a>
-        <a href="cart.html" style="color: black;"><div style="position:relative; right:-440px;"><i class="fas fa-shopping-cart"></i></div></a>
+        <a href="home.php"><img src="assets/logo.png" class="logo" ></a>
+        <a href="logout.php" style="color: black;"><div style="position:relative; right:-420px">Logout</div></a>
+        <a href="cart.php" style="color: black;"><div style="position:relative; right:-440px;"><i class="fas fa-shopping-cart"></i></div></a>
     </div>
     <div class="main">
         <div class="banner">
             <img src="assets/banner.png" width="100%">
         </div>
         <div class="mainmenu">
-            <div class="menunav">
-                <a href="#popular"class="navlink"><div class="navitem"><p>Popular</p></div></a>
-                <a href="#promo" class="navlink"><div class="navitem"><p>Promo</p></div></a>
-                <a href="#mains"class="navlink"><div class="navitem"><p>Mains</p></div></a>
-                <a href="#sides"class="navlink"><div class="navitem"><p>Sides</p></div></a>
-                <a href="#beverages"class="navlink"><div class="navitem"><p>Beverages</p></div></a>
-                <a href="#desserts"class="navlink"><div class="navitem"><p>Desserts</p></div></a>
+            <div class="sidenav">
+                <!-- <a href="#popular"class="navlink"><div class="navitem">&#9675</div></a> -->
+                <a href="#promo" class="navlink"><div class="navitem">&#9675</div></a>
+                <a href="#mains"class="navlink"><div class="navitem">&#9675</div></a>
+                <a href="#sides"class="navlink"><div class="navitem">&#9675</div></a>
+                <a href="#beverages"class="navlink"><div class="navitem">&#9675</div></a>
+                <a href="#desserts"class="navlink"><div class="navitem">&#9675</div></a>
             </div>
+            <div class="menudir">
+                <h2 id="promos"style="margin-top:0; margin-left:60px; text-align:right;">PROMOS</h2>
+                <h2 id="mains"style="margin-top:260px; margin-left:60px;text-align:right;">MAINS</h2>
+                <h2 id="sides"style="margin-top:550px; margin-left:60px;text-align:right;">SIDES</h2>
+                <h2 id="beverages"style="margin-top:550px; margin-left:60px;text-align:right;">DRINKS</h2>
+                <h2 id="desserts"style="margin-top:260px; margin-left:60px;text-align:right;">DESSERT</h2>
+            </div>
+            
             <div class="menudisplay">
-                <div id="promo">
-                <?php
+                <div>
+                    <!-- <h2 style="margin-left:60px; margin-top:0">Promos</h2> -->
+                    <div class="content">
+                        <?php
+                            $sql = "SELECT * FROM product_menu WHERE category IN ('promo','main')";
+                                if (!$result = mysqli_query($conn, $sql)) {
+                                    echo "Failed to get promo products: " . mysqli_error($conn);
+                                }
+                                
+                                for($i = 1; $i <= $result->num_rows; $i++) {
+                                $row = $result->fetch_assoc();
+                                
+                                ?>
+                                <!-- <h3><?php echo $row['category'];?></h3> -->
+                                <div class="card">
+                                    <?php echo "<img src='{$row['img_dir']}' width='280px' height='190px'>";?>    
+                                
+                                    <div class="card-desc">
+                                        <div class="card-title"><p>
+                                        <?php echo $row['productname'];	?>
+                                        </p></div>
+                                        <div>
+                                        <?php echo"<a style='text-decoration:none;color:black' href='details2.php". '?add=' . $i. "'><p class='card-add'>+</p></a></div>"?> 
+                                        
+                                    </div>
+                                </div> 
+                        <?php } ?>
+                    </div>
+                </div>
+                <div>
                     
-                    $sql = "SELECT productname, category FROM product_menu WHERE category='promo'";
-                    if (!$result = mysqli_query($conn, $sql)) {
-                        echo "Failed to get menu: " . mysqli_error($conn);
-                    }
-                    $resultRow = mysqli_num_rows($result);
-                    echo "<h2>PROMOS</h2>";
-                    if ($resultRow>0){
-                        while ($row = mysqli_fetch_assoc($result)){
-                            // $sqlimage ="SELECT "
-                           if(!$category){ 
-                                echo"<table>";
-                                echo"<tr>";   
-                                echo $row["productname"] . $row["category"] ."<br>";
-                                echo "<button>+</button>";
-                                echo "<tr>";
-                                echo "</table>";
-                            }
-                           else{
-                               echo"none";
-                           }
-                         }
-                    }                   
-                ?>
+                    <div class="content">
+                        <?php
+                            $sql = "SELECT * FROM product_menu WHERE category IN ('sides','drinks','dessert')";
+                                if (!$result = mysqli_query($conn, $sql)) {
+                                    echo "Failed to get promo products: " . mysqli_error($conn);
+                                }
+                                
+                                for($i = 9; $i <= $result->num_rows+8; $i++) {
+                                $row = $result->fetch_assoc();
+                                
+                                ?>
+                                <!-- <h3><?php echo $row['category'];?></h3> -->
+                                <div class="card">
+                                    <?php echo "<img src='{$row['img_dir']}' width='280px' height='190px'>";?>    
+                                
+                                    <div class="card-desc">
+                                        <div class="card-title"><p>
+                                        <?php echo $row['productname'];	?>
+                                        </p></div>
+                                        <div>
+                                        <?php 
+                                        echo"<a style='text-decoration:none;color:black' href='details2.php". '?add=' . $i. "'><p class='card-add'>+</p></a></div>"?> 
+                                        
+                                    </div>
+                                </div> 
+                        <?php } ?>
+                    </div>
                 </div>
-                <div id="mains">
-                <?php
-                    $sql = "SELECT productname, category FROM product_menu WHERE category='main'";
-                    if (!$result = mysqli_query($conn, $sql)) {
-                        echo "Failed to get menu: " . mysqli_error($conn);
-                    }
-                    $resultRow = mysqli_num_rows($result);
-                    if ($resultRow>0){
-                        while ($row = mysqli_fetch_assoc($result)){
-                           if(!$category){ 
-                               echo $row["productname"] . $row["category"] ."<br>";
-                            }
-                           else{
-                               echo"none";
-                           }
-                         }
-                    }                   
-                ?>
-                </div>
-                
             </div>
         </div>
     </div>
     </div>
     <div class="footer">
-        <div class="footerlink"><a href="faq.html" style="color: black; text-decoration: none;">FAQ</a></div>
-        <div class="footerlink"><a href="support.html" style="color: black; text-decoration: none;">Support</a></div>
-        <div class="footerlink"><a href="contact.html" style="color: black; text-decoration: none;">Contact Us</a></div>
+        <div class="footerlink"><a href="support.php" style="color: black; text-decoration: none;">FAQ</a></div>
+        <div class="footerlink"><a href="support.php" style="color: black; text-decoration: none;">Support</a></div>
+        <div class="footerlink"><a href="support.php" style="color: black; text-decoration: none;">Contact Us</a></div>
         <div class="footerlink"><i class="fab fa-facebook"></i></div>
         <div class="footerlink"><i class="fab fa-instagram"></i></div>
         

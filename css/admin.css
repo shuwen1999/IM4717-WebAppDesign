@@ -1,0 +1,27 @@
+h2 {
+	text-align: center; 
+}	
+	
+h3 { 
+	margin: 10px 40px;
+	padding: 20px 10px 0px;
+	font-weight: bold;
+	text-align: center
+	} 
+
+.feedback {
+	background: #FDEBEB;
+	margin: auto;
+	width: 50%;
+	border-radius: 5px;
+		}
+		
+.report {
+	margin: 10px 60px;
+	text-align: center
+}
+
+table, th, td {
+	border: 2px solid white;
+	text-align: center;
+}

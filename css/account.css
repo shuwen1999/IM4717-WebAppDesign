@@ -5,3 +5,14 @@ body{
     height:600px;
     padding:20px 100px 0px 100px;
 }
+
+.general{
+    display:flex;
+}
+
+.infoitems{
+    padding-left:100px;
+    padding-top:6px;
+}
+
+    
