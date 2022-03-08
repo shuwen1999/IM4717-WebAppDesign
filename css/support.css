@@ -1,0 +1,68 @@
+		
+h3 { 
+	margin: 10px 50px;
+	padding: 20px 10px 0px;
+	font-weight: bold;
+	} 
+
+h5 {
+	margin: 20px 30px;
+	padding: 20px;
+}
+
+.FAQ {
+	background: #FDEBEB;
+	margin: auto;
+	width: 95%;
+	padding-bottom: 30px;
+		}
+}
+
+#orders, #delivery {
+    background-color: #FDEBEB;
+	margin: auto;
+	width: 95%;
+		}
+		
+h4 {
+	margin: 10px 40px 0px;
+	padding: 20px;
+	text-decoration: underline;
+}
+		
+p {
+	margin: 0px 30px;
+	padding: 10px 30px 0px;
+}		
+		
+.msg {
+    background: #FDEBEB;
+	margin: auto;
+	width: 95%;
+		}		
+		
+.form {
+	margin-left: 50px;
+	margin-top:10px;
+}	
+	
+#msg, #submit, #reset {
+	margin: 10px;
+}
+
+.supportbtn{
+	background-color:#E8A990;
+    height:30px;
+    width:150px;
+    border:none;
+    margin-top: 16px;
+    margin-left:650px;
+}
+.input{
+	border:none;
+    background-color: white;
+	
+    padding:10px 15px;
+    color:#615555;
+    font-size:14px;
+}

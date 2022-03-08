@@ -1,137 +1,113 @@
-<?php
-// Include config file
-require_once "config.php";
- 
-// Define variables and initialize with empty values
-$username = $password = $confirm_password = "";
-$username_err = $password_err = $confirm_password_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Validate username
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter a username.";
-    } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Username can only contain letters, numbers, and underscores.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+<?php // register.php
+    // session_start();
+    $conn = mysqli_connect("localhost","f32ee","f32ee","f32ee");
+        if (!$conn){
+            echo "Error: Could not connect to database. Please try again later.";
+            exit;
+        }
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
+    if (isset($_POST['submit'])) {
+        if (empty($_POST['custemail']) || empty ($_POST['custpw'])
+            || empty ($_POST['password2']) ) {
+        echo "All records to be filled in";
+        exit;}
     }
+    $custemail = $_POST['custemail'];
+    $custpw = $_POST['custpw'];
+    $password2 = $_POST['password2'];
+    $custname = $_POST['custname'];
     
-    // Validate password
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
-        $confirm_password_err = "Please confirm password.";     
-    } else{
-        $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
-            $confirm_password_err = "Password did not match.";
-        }
-    }
-    
-    // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
-            
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: login.php");
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
 
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
+    // echo ("$username" . "<br />". "$password2" . "<br />");
+    if ($custpw != $password2) {
+        echo "Sorry passwords do not match";
+        exit;
     }
+    // echo $password;
+    $sql = "INSERT INTO cust_details (custname,custemail, custpw) 
+            VALUES ('$custname','$custemail', '$custpw')";
+    //	echo "<br>". $sql. "<br>";
+    $result = $conn->query($sql);
+	
+	
     
-    // Close connection
-    mysqli_close($link);
-}
+        
 ?>
- 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <title>Vivers Registration</title>
+    <meta charset=“utf-8”>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/layout.css"/>
+	<link rel="stylesheet" href="css/login.css"/>
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Montserrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
-        <h2>Sign Up</h2>
-        <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+   
+    <div class="header">
+        
+        <div style="position:relative;left:-400px;">
+            
+        </div>
+        <img src="assets/logo.png" class="logo" >
+    </div>
+    <div class="main" style="height:500px;">
+        <form action="register.php" method="post">
+            <h2 style="text-align:center;">Registration</h2>
+			<h4 style="text-align:center;">Please proceed to login after registration!</h4>
+            <input type="email" name="custemail" class="loginemail" size="50" placeholder="Email Address" required/>
+            <input type="password" name="custpw" class="loginpw" size="50" placeholder="Password" required/>
+            <input type="password" name="password2" class="loginpw" size="50" placeholder="Enter Password Again" required/>
+            <input type="text" name="custname" class="loginemail" size="50" placeholder="Enter Name" required/>
+
+            
+            <div class="linkbox">
+                <a href="login.php" class="loginlinks"><p>Forget Password</p></a>
+                <a href="index.php" class="loginlinks"><p style="margin-left:230px;">Already a User?</p></a>
             </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Submit">
-                <input type="reset" class="btn btn-secondary ml-2" value="Reset">
-            </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+            <input type="submit" value="Register" name="login" class="loginbtn" size="40" style="padding:10px 189px;">
         </form>
-    </div>    
+    </div>
+    <div class="footer">
+        <div class="footerlink"><a href="support.php" style="color: black; text-decoration: none;">FAQ</a></div>
+        <div class="footerlink"><a href="support.php" style="color: black; text-decoration: none;">Support</a></div>
+        <div class="footerlink"><a href="support.php" style="color: black; text-decoration: none;">Contact Us</a></div>
+        <div class="footerlink"><i class="fab fa-facebook"></i></div>
+        <div class="footerlink"><i class="fab fa-instagram"></i></div>
+        
+    </div>
 </body>
 </html>
+
+<!-- 
+<html>
+<head>
+	<title>Registration page</title>
+</head>
+<body>		
+<h1><font color="blue">Registration Page</font></h1>
+<form action="register.php" method=POST>
+Username:<br />
+<input type=text name=username><br /><br />
+Password:<br />
+<input type=password name=password><br /><br />
+Password confirmation:<br /> 
+<input type=password name=password2><br /><br />
+
+<input type=submit name=submit value=Submit>
+<input type=reset name=reset value="Reset">
+</form>
+</body>
+</html> -->

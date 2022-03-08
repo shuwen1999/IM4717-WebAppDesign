@@ -1,0 +1,59 @@
+.main{
+    min-height:1000px;
+}
+.selected{
+    display:flex;
+    margin:50px 100px;
+}
+.desc{
+    margin: 0px 20px;
+}
+
+.cross{
+    text-decoration:none;
+    font-size:40px;
+    position:absolute;
+    top:140px;
+    right:100px;
+}
+
+.sides, .addon, .message,.qty{
+    border: 2px #EBEBEB solid;
+    margin:20px 100px;
+    padding: 0px 50px 20px;
+}
+
+#qtyminus, #qtyplus{
+    background-color:#FDEBEB;
+    border:none;
+    font-size:24px;
+    height:30px;
+    width:30px;
+    
+}
+.area{
+    background-color:#F3F3F3;
+    border:none;
+    padding:10px
+}
+#quantity{
+    border:none;
+    background-color:#F3F3F3;
+    height:30px;
+    width:40px;
+    text-align:center;
+    padding-top: 7px;
+}
+
+.addcart{
+    background-color:#FDEBEB;
+    height:30px;
+    width:200px;
+    border:none;
+    margin-top: 16px;
+    margin-left:650px;
+}
+
+.qty{
+    display:flex;
+}

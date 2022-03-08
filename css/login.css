@@ -39,7 +39,7 @@
     text-decoration:underline;
 }
 
-.loginbtn{
+.loginbtn, .logoutbtn{
     background-color:#FDEBEB;
     border:none;
     padding:10px 197px;

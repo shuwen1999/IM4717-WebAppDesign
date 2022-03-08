@@ -1,56 +1,32 @@
 use f32ee;
 
 insert into product_menu values
-	(1, "Chicken Chop", "main", 5),
-	(2, "Fish and Chips","main", 6),
-	(3, "Rib Eye Steak","main", 10),
-	(4, "Pork Ribs","main", 8),
-	(5, "Carbonara","main", 5),
-    (6, "Fries","sides", 2),
-    (7, "Onion Rings","sides", 2.5),
-    (8, "Salad","sides", 4),
-    (9, "Chicken Wing","sides", 3),
-    (10, "Cream of Mushroom","side", 3),
-    (11, "Coke","drinks", 1),
-    (12, "Coffee","drinks", 1),
-    (13, "Tea","drinks", 1),
-    (14, "Tiramisu","dessert", 2.5),
-    (15, "Cheesecake","dessert", 2.5),
-    (16, "Ice Cream","dessert", 2),
-    (17, "Chicken Chop + Ice Cream","promo", 6),
-    (18, "Fish and Chips + Cheesecake","promo", 8),
-    (19, "Carbonara + Soup","promo", 7);
-    
+	(1, "Chicken Chop + Ice Cream","promo", 6,"assets/chickenchop.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (2, "Fish and Chips + Cheesecake","promo", 8,"assets/fishandchips.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (3, "Carbonara + Soup","promo", 7,"assets/carbonara.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (4, "Chicken Chop", "main", 5, "assets/chickenchop.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+	(5, "Fish and Chips","main", 6,"assets/fishandchips.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+	(6, "Rib Eye Steak","main", 10,"assets/steak.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+	(7, "Pork Ribs","main", 8,"assets/porkribs.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+	(8, "Carbonara","main", 5,"assets/carbonara.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (9, "Fries","sides", 2 ,"assets/fries.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (10, "Onion Rings","sides", 2.5,"assets/onionrings.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (11, "Mashed Potato","sides", 2.5,"assets/mashedpotato.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (12, "Salad","sides", 4,"assets/salad.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (13, "Chicken Wing","sides", 3,"assets/chickenwing.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (14, "Cream of Mushroom","sides", 3,"assets/soup.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (15, "Coke","drinks", 1,"assets/coke.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (16, "Coffee","drinks", 1,"assets/coffee.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (17, "Tea","drinks", 1,"assets/tea.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (18, "Tiramisu","dessert", 2.5,"assets/tiramisu.png", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (19, "Cheesecake","dessert", 2.5,"assets/cheesecake.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last."),
+    (20, "Ice Cream","dessert", 2,"assets/icecream.jpg", "Value for money. Get the chicken chop and ice cream at a cheaper price. While stocks last.");
 
-
-insert into product_order values
-	(1, 3, 2, 20),
-	(2, 7, 1, 2.5),
-	(3, 1, 4, 20),
-	(4, 15, 1, 2.5),
-	(5, 19, 3, 21),
-	(6, 17, 5, 30),
-	(7, 3, 1, 10);
 
 insert into cust_details values
-    (1, "Mary", 98765432, "Hougang Blk 333 #01-02", 530333, "mary@gmail.com", 98765432, "Hougang Blk 333 #01-02", 530333, 3),
-    (2, "Tom", 97532468, "Ang Mo Kio Blk 3 #02-01", 546003, "tom2@gmail.com", 97532468, "Ang Mo Kio Blk 3 #02-01", 546003, 5),
-    (3, "Jane", 91929394, "Jurong Blk 78 #10-29", 345078, "janejane@gmail.com", 91929394, "Jurong Blk 78 #10-29", 345078, 6),
-    (4, "John", 85769403, "Tampines Blk 154 #10-30", 528154, "johnnyenglish@gmail.com", 85769403, "Tampines Blk 154 #10-30", 528154, 1);
+    (1, "Admin", "admin@admin", "admin" ),
+    (2, "Tom",  "tom2@gmail.com", "tom222" ),
+    (3, "Jane",  "janejane@gmail.com", "jane321" ),
+    (4, "John",  "johnnyenglish@gmail.com", "engchi" ),
+	(5, "Mary", "mary@gmail.com", "mary123" );
 
-insert into payment values
-    (1, 1, "Mary", 5433345567899876, 0523, 123),
-    (2, 2, "Tom", 58674930281723857, 1222, 873),
-    (3, 3, "Jane", 2938475039494928, 1025, 952),
-    (4, 4, "John", 5433345567899876, 0523, 123);
-    
--- insert into product_image values{
---     -- (1, 1, "chickenchop", "Z:\public_html\IM4717-WebAppDesign\assets\chickenchop.jpg"),
---     -- (2, 2, "fishandchips" ,"Z:\public_html\IM4717-WebAppDesign\assets\fishandchips.jpg");
--- }
-
-insert into users values
-    (1,1, "mary@gmail.com", "mary123"),
-    (2,2, "tom2@gmail.com", "tom222"),
-    (3,3, "janejane@gmail.com", "jane321"),
-    (4,4, "johnnyenglish@gmail.com", "engchi");

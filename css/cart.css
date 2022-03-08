@@ -1,0 +1,79 @@
+.main {
+	margin: auto;
+	width: 90%;
+}
+
+.button {
+    background: #FDEBEB;
+    padding: 10px 40px;
+    text-align: center;
+    /* border-radius: 20px; */
+    color: black;
+    text-decoration: none;
+    margin: 20px;
+}
+
+h1 {
+	/* background-color: #FFEFEF; */
+	padding: 20px;
+	margin: 10px;
+	/* border-radius: 10px; */
+}
+
+h3 {
+	padding: 20px;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 10px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+th {
+	background-color: #F3F3F3;
+	/* border-radius: 10px; */
+  padding: 0 30px;
+	width: auto;
+}
+
+.price {
+	float: right;
+	width: 10%;
+}
+
+.OrderSummary {
+	background-color: #FFE5E5;
+	/* border-radius: 10px; */
+}
+
+ul {
+    list-style-type: none;
+	margin-bottom: 0px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 95%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+.button{
+  border:none;
+  margin:0;
+  padding:10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}

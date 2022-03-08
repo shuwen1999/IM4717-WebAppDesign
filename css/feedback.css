@@ -1,0 +1,23 @@
+		
+h3 { 
+	margin: 10px 30px;
+	padding: 20px 10px 0px;
+	font-weight: bold;
+	} 
+
+.feedback {
+	background: #FDEBEB;
+	margin: auto;
+	width: 95%;
+	padding-bottom: 30px;
+		}
+}	
+
+.form {
+	margin-left: 50px;
+}
+	
+	
+#msg, #submit, #reset {
+	margin: 10px;
+}
